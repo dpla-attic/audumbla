@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 group :development do
+  gem 'factory_girl'
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'pry-rescue'
