@@ -5,13 +5,8 @@ end
 shared_examples 'an enrichment' do
   include_context 'with record'
 
-  it 'is an enrichment' do
-    expect(subject).to be_a Krikri::Enrichment
-  end
-
-  it 'is implemented' do
-    expect(subject).to respond_to :enrich_value
-  end
+  it { is_expected.to be_a Krikri::Enrichment }
+  it { is_expected.to respond_to :enrich_value }
 
   describe '#list_fields' do
     let(:list) { subject.list_fields(record) }

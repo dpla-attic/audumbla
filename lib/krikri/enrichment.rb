@@ -69,6 +69,8 @@ module Krikri
     end
 
     ##
+    # Runs the enrichment directly on the given record.
+    #
     # @see Krikri::Enrichment#enrich
     def enrich!(record, input_fields, output_fields)
       output_fields.map! { |f| field_to_chain(f) }
