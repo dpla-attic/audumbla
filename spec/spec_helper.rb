@@ -1,4 +1,5 @@
 require 'audumbla'
+require 'audumbla/spec/enrichment'
 
 if ENV['COVERAGE'] == 'yes'
   require 'simplecov'
@@ -11,9 +12,6 @@ CodeClimate::TestReporter.start
 require 'rspec'
 require 'factory_girl'
 require 'dpla/map/factories'
-
-# Load support files
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
   config.color = true
