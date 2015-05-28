@@ -1,4 +1,4 @@
-module Krikri
+module Audumbla
   ##
   # Enrich a specific field or list of fields, setting the property to the
   # supplied value
@@ -9,7 +9,7 @@ module Krikri
     # The main enrichment method; runs the enrichment against a stated
     # set of fields for a record.
     #
-    # This is a narrower case of `Krikri::Enrichment` which runs the
+    # This is a narrower case of `Audumbla::Enrichment` which runs the
     # enrichment against each of the specified fields in turn, setting
     # the field's value to the result.
     #
@@ -24,7 +24,7 @@ module Krikri
     #   delete_empty_string_literals.enrich(record)
     #   delete_empty_string_literals.enrich(record, :all)
     #
-    # @see Krikri::Enrichment#enrich for documentation about field
+    # @see Audumbla::Enrichment#enrich for documentation about field
     #   formatting
     #
     # @param record [ActiveTriples::Resource] the record to enrich

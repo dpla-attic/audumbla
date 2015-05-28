@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Krikri::FieldEnrichment do
+describe Audumbla::FieldEnrichment do
   subject { enrichment_class.new }
 
-  let(:enrichment_class) { Class.new { include Krikri::FieldEnrichment } }
+  let(:enrichment_class) { Class.new { include Audumbla::FieldEnrichment } }
 
   context 'with implementation' do
     before { allow(subject).to receive(:enrich_value).and_return('moomin') }

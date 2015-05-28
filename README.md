@@ -1,7 +1,7 @@
-KriKri::Enrichments
-===================
+Auðumbla
+========
 
-Enrichments provides the basic functionality for defining and running
+Auðumbla provides the basic functionality for defining and running
 metadata enrichments in [KriKri](https://github.com/dpla/KriKri).
 
 Contribution Guidelines

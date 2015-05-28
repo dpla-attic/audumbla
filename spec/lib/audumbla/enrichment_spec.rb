@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Krikri::Enrichment do
+describe Audumbla::Enrichment do
   subject { klass.new }
 
-  let(:klass) { Class.new { include Krikri::Enrichment } }
+  let(:klass) { Class.new { include Audumbla::Enrichment } }
 
   it_behaves_like 'a generic enrichment'
 

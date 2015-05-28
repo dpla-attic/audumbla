@@ -5,7 +5,7 @@ end
 shared_examples 'an enrichment' do
   include_context 'with record'
 
-  it { is_expected.to be_a Krikri::Enrichment }
+  it { is_expected.to be_a Audumbla::Enrichment }
   it { is_expected.to respond_to :enrich_value }
 
   describe '#list_fields' do

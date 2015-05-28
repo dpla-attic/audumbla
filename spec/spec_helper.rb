@@ -1,4 +1,4 @@
-require 'krikri/enrichments'
+require 'audumbla'
 
 if ENV['COVERAGE'] == 'yes'
   require 'simplecov'
