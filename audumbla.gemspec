@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.email       = ["tech@dp.la"]
   s.homepage    = "http://github.com/dpla/audumbla"
   s.summary     = "A toolkit for enhancement of RDF Metadata"
+  s.description = "Metadata enrichment for cultural heritage institutions."
   s.license     = "MIT"
 
   s.files = Dir["lib/**/*",  "README.md"]
@@ -21,6 +22,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'dpla-map', '~>4.0.0.0.pre.10'
 
-  s.add_development_dependency 'rspec'
-  s.add_development_dependency 'pry'
+  s.add_development_dependency 'rspec', '~>3.0'
+  s.add_development_dependency 'pry', '>= 0.10.0'
 end
