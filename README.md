@@ -1,6 +1,8 @@
 Auðumbla
 ========
 
+[![Build Status](https://travis-ci.org/dpla/audumbla.svg?branch=develop)](https://travis-ci.org/dpla/audumbla)
+
 Auðumbla provides the basic functionality for defining and running
 metadata enrichments in [KriKri](https://github.com/dpla/KriKri).
 
