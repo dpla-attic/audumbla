@@ -21,7 +21,10 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency 'dpla-map', '~>4.0.0.0.pre.10'
+  s.add_dependency 'twofishes'
+  s.add_dependency 'geokit'
 
   s.add_development_dependency 'rspec', '~>3.0'
+  s.add_development_dependency 'webmock'
   s.add_development_dependency 'pry', '>= 0.10.0'
 end
