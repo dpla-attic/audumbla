@@ -1,5 +1,6 @@
 require 'twofishes'
 require 'geokit'
+require 'yaml'
 
 module Audumbla::Enrichments
   ##
@@ -15,6 +16,21 @@ module Audumbla::Enrichments
   # `skos:exactMatch` are reserved for the GeoNames features returned by the 
   # geocoder. Other matching URIs (currently: LC authorities) are included as
   # `skos:closeMatch`
+  # 
+  # Configuration is handled through a YAML file passed into the initializer 
+  # (default: 'geocode.yml'). The options are:
+  #   - 'twofishes_host': the hostname for the twofishes server (default: 
+  #       'localhost')
+  #   - 'twofishes_port': the port of the twofishes geocode endpoint (default: 
+  #        8080)
+  #   - 'twofishes_timeout': request timeout in seconds (default: 3)
+  #   - 'twofishes_retries': request retry maximum for twofishes (default: 2)
+  #   - 'distance_threshold': the maximum distance between a set of coordinates
+  #        in the  input object and a candidate match before we judge it a 
+  #        false positive, given in kilometers. (default: 5)
+  #   - 'max_intepretations': the number of geocoded "interpretations" to 
+  #       request from the server; these are the places that will be considered
+  #       by the internal heuristics (defualt: 5).
   #
   # @example enriching from a `#providedLabel`
   #   
@@ -54,12 +70,31 @@ module Audumbla::Enrichments
     include Audumbla::FieldEnrichment
 
     DEFAULT_DISTANCE_THRESHOLD_KMS = 100
+    DEFAULT_MAX_INTERPRETATIONS = 5
+    DEFAULT_TWOFISHES_HOST = 'localhost'
+    DEFAULT_TWOFISHES_PORT = 8080
+    DEFAULT_TWOFISHES_TIMEOUT = 10
+    DEFAULT_TWOFISHES_RETRIES = 2
 
-    Twofishes.configure do |config|
-      config.host = 'localhost' 
-      config.port = 8080
-      config.timeout = 100
-      config.retries = 2 
+    ##
+    # @param [String] config_file  a path to a config file for the geocoder; 
+    #   default: 'geocode.yml'
+    def initialize(config_file = 'geocode.yml')
+      config = YAML.load_file(config_file)
+
+      @distance_threshold = config.fetch('distance_threshold', 
+                                         DEFAULT_DISTANCE_THRESHOLD_KMS)
+      @max_interpretations = config.fetch('max_interpretations', 
+                                          DEFAULT_MAX_INTERPRETATIONS)
+
+      Twofishes.configure do |twofish|
+        twofish.host = config.fetch('twofishes_host', DEFAULT_TWOFISHES_HOST)
+        twofish.port = config.fetch('twofishes_port', DEFAULT_TWOFISHES_PORT)
+        twofish.timeout = config.fetch('twofishes_timeout', 
+                                       DEFAULT_TWOFISHES_TIMEOUT)
+        twofish.retries = config.fetch('twofishes_retries', 
+                                       DEFAULT_TWOFISHES_RETRIES)
+      end
     end
 
     ##
@@ -67,6 +102,9 @@ module Audumbla::Enrichments
     # process adds a `skos:exactMatch` for a matching GeoNames URI, if any, and
     # populates the remaining place data to the degree possible from the matched
     # feature.
+    #
+    # Considers a number of matches specified by `@max_interpretations` and 
+    # returned by Twofishes, via `#match?`.
     # 
     # @param [DPLA::MAP::Place] value  the place to geocode
     #
@@ -75,7 +113,7 @@ module Audumbla::Enrichments
       return value unless value.is_a? DPLA::MAP::Place
       interpretations = geocode(value.providedLabel.first, 
                                 [],
-                                maxInterpretations: 5)
+                                maxInterpretations: @max_interpretations)
       match = interpretations.find { |interp| match?(interp, value) }
       match.nil? ? value : enrich_place(value, match.feature)
     end
@@ -86,10 +124,11 @@ module Audumbla::Enrichments
     # of at the geocoder itself, but a simple accept/reject of the points 
     # offered is possible here. This allows existing data about the place
     # to be used as context.
-    #
+    # 
     # For example, this method returns false if `place` contains latitude
     # and longitude, but the candidate match has a geometry far away from those
-    # given.
+    # given. "far away" is defined by `@distance_threshold` from the center of the 
+    # candidate feature to the point given by `#lat` and `#long` in `place`. 
     #
     # @param [GeocodeInterpretation] interpretation  a twofishes interpretation
     # @param [#lat#long] place  a place to verify a match against
@@ -103,7 +142,7 @@ module Audumbla::Enrichments
         # measure distance between point centers
         distance = twofishes_point_to_geokit(interpretation.geometry.center)
                    .distance_to(point, unit: :kms)
-        return distance < DEFAULT_DISTANCE_THRESHOLD_KMS
+        return distance < @distance_threshold
       end
         
       twofishes_bounds_to_geokit(interpretation.geometry.bounds)
@@ -183,6 +222,8 @@ module Audumbla::Enrichments
       end
     end
 
+    private
+
     ##
     # @param [#lat#long] point  a twofishes point to convert to Geokit
     #
@@ -192,7 +233,7 @@ module Audumbla::Enrichments
     end
 
     ##
-    # @param [#ne#sw] bounds  a twofishes binding box to convert to Geokit
+    # @param [#ne#sw] bounds  a twofishes bounding box to convert to Geokit
     #
     # @return [Geokit::Bounds]
     def twofishes_bounds_to_geokit(bounds)

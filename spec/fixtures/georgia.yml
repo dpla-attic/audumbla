@@ -1,0 +1,276 @@
+--- !ruby/object:GeocodeResponse
+interpretations:
+- !ruby/object:GeocodeInterpretation
+  what: ''
+  where: georgia
+  feature: !ruby/object:GeocodeFeature
+    woeType: 8
+    cc: US
+    geometry: !ruby/object:FeatureGeometry
+      center: !ruby/object:GeocodePoint
+        lat: 32.75042
+        lng: -83.50018
+      bounds: !ruby/object:GeocodeBoundingBox
+        ne: !ruby/object:GeocodePoint
+          lat: 35.000659
+          lng: -80.751429
+        sw: !ruby/object:GeocodePoint
+          lat: 30.355756999999997
+          lng: -85.605165
+      source: usa_adm1.shp
+    name: Georgia
+    displayName: Georgia, United States
+    ids:
+    - !ruby/object:FeatureId
+      source: geonameid
+      id: '4197000'
+    - !ruby/object:FeatureId
+      source: woeid
+      id: '2347569'
+    names:
+    - !ruby/object:FeatureName
+      flags:
+      - 2
+      name: GA
+      lang: abbr
+    - !ruby/object:FeatureName
+      flags:
+      - 16
+      name: State of Georgia
+      lang: en
+    - !ruby/object:FeatureName
+      flags:
+      - 64
+      - 16
+      name: Peach State
+      lang: en
+    - !ruby/object:FeatureName
+      flags:
+      - 128
+      - 16
+      - 1
+      name: Georgia
+      lang: en
+    highlightedName: "<b>Georgia</b>, United States"
+    matchedName: Georgia, United States
+    id: geonameid:4197000
+    attributes: !ruby/object:GeocodeFeatureAttributes
+      adm0cap: false
+      adm1cap: false
+      scalerank: 20
+      labelrank: 0
+      natscale: 0
+      population: 8975842
+      sociallyRelevant: false
+      worldcity: false
+      urls:
+      - http://id.loc.gov/authorities/names/n79023113
+      - http://en.wikipedia.org/wiki/Georgia_(U.S._state)
+    longId: 72057594042124936
+    parentIds:
+    - 72057594044179937
+- !ruby/object:GeocodeInterpretation
+  what: ''
+  where: georgia
+  feature: !ruby/object:GeocodeFeature
+    woeType: 12
+    cc: GE
+    geometry: !ruby/object:FeatureGeometry
+      center: !ruby/object:GeocodePoint
+        lat: 41.99998
+        lng: 43.4999
+      bounds: !ruby/object:GeocodeBoundingBox
+        ne: !ruby/object:GeocodePoint
+          lat: 43.586627
+          lng: 46.736119
+        sw: !ruby/object:GeocodePoint
+          lat: 41.054942
+          lng: 40.006604
+      source: gn-adm0-new3.json
+    name: Georgia
+    displayName: Georgia
+    ids:
+    - !ruby/object:FeatureId
+      source: geonameid
+      id: '614540'
+    names:
+    - !ruby/object:FeatureName
+      flags:
+      - 2
+      name: GE
+      lang: abbr
+    - !ruby/object:FeatureName
+      flags:
+      - 1024
+      name: Georgian Soviet Socialist Republic
+      lang: en
+    - !ruby/object:FeatureName
+      flags:
+      - 128
+      - 64
+      - 1
+      name: Georgia
+      lang: en
+    highlightedName: "<b>Georgia</b>"
+    matchedName: Georgia
+    id: geonameid:614540
+    attributes: !ruby/object:GeocodeFeatureAttributes
+      adm0cap: false
+      adm1cap: false
+      scalerank: 20
+      labelrank: 0
+      natscale: 0
+      population: 4630000
+      sociallyRelevant: false
+      worldcity: false
+      urls:
+      - http://ru.wikipedia.org/wiki/%D0%93%D1%80%D1%83%D0%B7%D0%B8%D1%8F
+      - http://en.wikipedia.org/wiki/Georgia_%28country%29
+    longId: 72057594038542476
+    parentIds:
+    - 72057594044183083
+    longIds:
+    - 72057594038542363
+- !ruby/object:GeocodeInterpretation
+  what: ''
+  where: georgia
+  feature: !ruby/object:GeocodeFeature
+    woeType: 10
+    cc: US
+    geometry: !ruby/object:FeatureGeometry
+      center: !ruby/object:GeocodePoint
+        lat: 44.72824
+        lng: -73.12763
+    name: Town of Georgia
+    displayName: Town of Georgia, VT, United States
+    ids:
+    - !ruby/object:FeatureId
+      source: geonameid
+      id: '5236379'
+    - !ruby/object:FeatureId
+      source: woeid
+      id: '2409718'
+    names:
+    - !ruby/object:FeatureName
+      flags:
+      - 16
+      - 1
+      name: Town of Georgia
+      lang: en
+    - !ruby/object:FeatureName
+      flags:
+      - 16
+      - 8
+      - 1
+      name: Georgia
+      lang: en
+    highlightedName: "<b>Georgia</b>, VT, United States"
+    matchedName: Georgia, VT, United States
+    id: geonameid:5236379
+    attributes: !ruby/object:GeocodeFeatureAttributes
+      adm0cap: false
+      adm1cap: false
+      scalerank: 20
+      labelrank: 0
+      natscale: 0
+      population: 0
+      sociallyRelevant: false
+      worldcity: false
+      urls: []
+    longId: 72057594043164315
+    parentIds:
+    - 72057594044179937
+    - 72057594043170219
+    - 72057594043164215
+- !ruby/object:GeocodeInterpretation
+  what: ''
+  where: georgia
+  feature: !ruby/object:GeocodeFeature
+    woeType: 7
+    cc: US
+    geometry: !ruby/object:FeatureGeometry
+      center: !ruby/object:GeocodePoint
+        lat: 40.18733
+        lng: -74.28459
+      bounds: !ruby/object:GeocodeBoundingBox
+        ne: !ruby/object:GeocodePoint
+          lat: 40.1990013123
+          lng: -74.2533340454
+        sw: !ruby/object:GeocodePoint
+          lat: 40.1450004578
+          lng: -74.3127212524
+    name: Georgia
+    displayName: Georgia, NJ, United States
+    ids:
+    - !ruby/object:FeatureId
+      source: geonameid
+      id: '5098392'
+    - !ruby/object:FeatureId
+      source: woeid
+      id: '2409714'
+    names:
+    - !ruby/object:FeatureName
+      flags:
+      - 16
+      - 1
+      name: Georgia
+      lang: en
+    highlightedName: "<b>Georgia</b>, NJ, United States"
+    matchedName: Georgia, NJ, United States
+    id: geonameid:5098392
+    attributes: !ruby/object:GeocodeFeatureAttributes
+      adm0cap: false
+      adm1cap: false
+      scalerank: 20
+      labelrank: 0
+      natscale: 0
+      population: 0
+      sociallyRelevant: false
+      worldcity: false
+      urls:
+      - http://en.wikipedia.org/wiki/Georgia%2C_New_Jersey
+    longId: 72057594043026328
+    parentIds:
+    - 72057594044179937
+    - 72057594043029696
+    - 72057594043029241
+- !ruby/object:GeocodeInterpretation
+  what: ''
+  where: georgia
+  feature: !ruby/object:GeocodeFeature
+    woeType: 0
+    cc: CM
+    geometry: !ruby/object:FeatureGeometry
+      center: !ruby/object:GeocodePoint
+        lat: 6.6
+        lng: 14.01667
+    name: Gorgia
+    displayName: Gorgia, Cameroon
+    ids:
+    - !ruby/object:FeatureId
+      source: geonameid
+      id: '2231063'
+    names:
+    - !ruby/object:FeatureName
+      flags:
+      - 16
+      - 1
+      name: Gorgia
+      lang: en
+    highlightedName: "<b>Georgia</b>, Cameroon"
+    matchedName: Georgia, Cameroon
+    id: geonameid:2231063
+    attributes: !ruby/object:GeocodeFeatureAttributes
+      adm0cap: false
+      adm1cap: false
+      scalerank: 20
+      labelrank: 0
+      natscale: 0
+      population: 0
+      sociallyRelevant: false
+      worldcity: false
+      urls: []
+    longId: 72057594040158999
+    parentIds:
+    - 72057594040161323
+    - 72057594040163951
