@@ -1,0 +1,7 @@
+---
+'distance_threshold': 100
+'max_intepretations': 5
+'twofishes_host': 'localhost'
+'twofishes_port': 8080
+'twofishes_timeout': 10
+'twofishes_retries': 2
