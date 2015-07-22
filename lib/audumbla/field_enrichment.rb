@@ -42,7 +42,19 @@ module Audumbla
       return record unless record.respond_to? field
       values = record.send(field)
       if field_chain.length == 1
-        new_values = values.map { |v| enrich_value(v) }.flatten.compact
+        new_values = values.map { |v| enrich_value(v) }
+        # We call #flatten twice, since under some circumstances it fails on 
+        # nested #to_ary calls the first time. This appears to be related to:
+        #
+        # http://yehudakatz.com/2010/01/02/the-craziest-fing-bug-ive-ever-seen/
+        #   and
+        # https://bugs.ruby-lang.org/issues/2494
+        begin
+          new_values = new_values.flatten.compact
+        rescue
+          new_values = new_values.flatten.compact
+        end
+
         record.send("#{field}=".to_sym, new_values)
       else
         resources(values).each { |v| enrich_field(v, field_chain[1..-1]) }
