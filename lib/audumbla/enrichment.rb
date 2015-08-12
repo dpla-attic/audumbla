@@ -116,8 +116,18 @@ module Audumbla
     def values_for_field(record, field_chain)
       values = record.send(field_chain.first)
       return values if field_chain.length == 1
-      resources(values).map { |v| values_for_field(v, field_chain[1..-1]) }
-        .flatten.compact
+
+      values = resources(values).map do |v| 
+        values_for_field(v, field_chain[1..-1])
+      end
+
+      # We call #flatten twice, since under some circumstances it fails on 
+      # nested #to_ary calls the first time. This appears to be related to:
+      #
+      # http://yehudakatz.com/2010/01/02/the-craziest-fing-bug-ive-ever-seen/
+      #   and
+      # https://bugs.ruby-lang.org/issues/2494
+      begin; values.flatten.compact; rescue; values.flatten.compact; end
     end
 
     def set_field(record, field_chain, values)
