@@ -21,6 +21,8 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency 'dpla-map', '~>4.0.0.0.pre.10'
+
+  s.add_dependency 'actionview'
   s.add_dependency 'twofishes'
   s.add_dependency 'geokit'
 
