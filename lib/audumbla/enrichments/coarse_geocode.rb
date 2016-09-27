@@ -35,7 +35,7 @@ module Audumbla::Enrichments
   # @example enriching from a `#providedLabel`
   #   
   #    place = DPLA::MAP::Place.new.tap { |p| p.providedLabel = 'Georgia' }
-  #    CoarseGeocode.new.enrich_value.dump :ttl
+  #    CoarseGeocode.new.enrich_value(place).dump :ttl
   #    # [
   #    #    a <http://www.europeana.eu/schemas/edm/Place>;
   #    #    <http://dp.la/about/map/providedLabel> "Georgia";
@@ -55,7 +55,7 @@ module Audumbla::Enrichments
   #      p.long = 43.4998
   #    end
   #    
-  #    CoarseGeocode.new.enrich_value.dump :ttl
+  #    CoarseGeocode.new.enrich_value(place).dump :ttl
   #    # [
   #    #    a <http://www.europeana.eu/schemas/edm/Place>;
   #    #    <http://dp.la/about/map/providedLabel> "Georgia";
